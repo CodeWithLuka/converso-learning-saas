@@ -1,7 +1,6 @@
 import { CompanionCard } from "@/components/companion-card";
 import { CompanionsList } from "@/components/companions-list";
 import { CTA } from "@/components/cta";
-import { recentSessions } from "@/constants";
 
 const HomePage = () => {
 	return (
@@ -14,7 +13,7 @@ const HomePage = () => {
 					topic="Neural Network of the Brain"
 					subject="Science"
 					duration={45}
-					color="#ffda6e"
+					color="#bde7ff"
 				/>
 				<CompanionCard
 					id="456"
@@ -30,15 +29,11 @@ const HomePage = () => {
 					topic="English Literature"
 					subject="Language"
 					duration={30}
-					color="#bde7ff"
+					color="#ffda6e"
 				/>
 			</section>
 			<section className="home-section">
-				<CompanionsList
-					title="Recently Competed Sessions"
-					companions={recentSessions}
-					classNames="w-2/3 max-lg:w-full"
-				/>
+				<CompanionsList />
 				<CTA />
 			</section>
 		</main>
