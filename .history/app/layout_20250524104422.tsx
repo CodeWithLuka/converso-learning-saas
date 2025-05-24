@@ -26,7 +26,6 @@ export default function RootLayout({
 		<html lang="en">
 			<body className={`${bricolage.variable} antialiased`}>
 				<ClerkProvider
-					afterSignOutUrl="/"
 					appearance={{ variables: { colorPrimary: "#fe5933" } }}
 				>
 					<Navbar />

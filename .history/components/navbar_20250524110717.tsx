@@ -21,7 +21,7 @@ export const Navbar = () => {
 			<div className="flex items-center gap-8">
 				<NavItems />
 				<SignedOut>
-					<SignInButton>
+					<SignInButton mode="modal">
 						<button className="btn-signin">Sign In</button>
 					</SignInButton>
 				</SignedOut>

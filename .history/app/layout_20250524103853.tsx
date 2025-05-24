@@ -23,16 +23,13 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang="en">
-			<body className={`${bricolage.variable} antialiased`}>
-				<ClerkProvider
-					afterSignOutUrl="/"
-					appearance={{ variables: { colorPrimary: "#fe5933" } }}
-				>
+		<ClerkProvider>
+			<html lang="en">
+				<body className={`${bricolage.variable} antialiased`}>
 					<Navbar />
 					{children}
-				</ClerkProvider>
-			</body>
-		</html>
+				</body>
+			</html>
+		</ClerkProvider>
 	);
 }
