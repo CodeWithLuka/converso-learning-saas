@@ -29,22 +29,30 @@ export const getAllCompanions = async ({
 
 	let query = supabase.from("companions").select();
 
-	if (subject && topic) {
-		query = query
-			.ilike("subject", `%${subject}%`)
-			.or(`topic.ilike.%${topic}%,name.ilike.%${topic}%`);
-	} else if (subject) {
-		query = query.ilike("subject", `%${subject}%`);
-	} else if (topic) {
-		query = query.or(`topic.ilike.%${topic}%,name.ilike.%${topic}%`);
+	// only enter this if you have at least one filter
+	if (subject || topic) {
+		// inner OR for topic/name
+		const topicOrName = topic
+			? `or(topic.ilike.%${topic}%,name.ilike.%${topic}%)`
+			: null;
+
+		// outer AND: subject match AND (topic OR name) match, or just subject or just topic conditions
+		let filter = "";
+		if (subject && topic) {
+			filter = `and(subject.ilike.%${subject}%,${topicOrName})`;
+		} else if (subject) {
+			filter = `subject.ilike.%${subject}%`;
+		} else if (topic) {
+			filter = topicOrName!;
+		}
+
+		query = query.or(filter);
 	}
 
 	query = query.range((page - 1) * limit, page * limit - 1);
 
 	const { data: companions, error } = await query;
-
 	if (error) throw new Error(error.message);
-
 	return companions;
 };
 
