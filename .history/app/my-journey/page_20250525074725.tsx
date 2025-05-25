@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/accordion";
 import { CompanionsList } from "@/components/companions-list";
 import {
-	// getBookmarkedCompanions,
+	getBookmarkedCompanions,
 	getUserCompanions,
 	getUserSessions,
 } from "@/lib/actions/companions.actions";
@@ -22,7 +22,7 @@ const Profile = async () => {
 
 	const companions = await getUserCompanions(user.id);
 	const sessionHistory = await getUserSessions(user.id);
-	// const bookmarkedCompanions = await getBookmarkedCompanions(user.id);
+	const bookmarkedCompanions = await getBookmarkedCompanions(user.id);
 
 	return (
 		<main className="min-lg:w-3/4">

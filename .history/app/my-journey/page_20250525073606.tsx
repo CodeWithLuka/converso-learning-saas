@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/accordion";
 import { CompanionsList } from "@/components/companions-list";
 import {
-	// getBookmarkedCompanions,
+	getBookmarkedCompanions,
 	getUserCompanions,
 	getUserSessions,
 } from "@/lib/actions/companions.actions";
@@ -22,7 +22,7 @@ const Profile = async () => {
 
 	const companions = await getUserCompanions(user.id);
 	const sessionHistory = await getUserSessions(user.id);
-	// const bookmarkedCompanions = await getBookmarkedCompanions(user.id);
+	const bookmarkedCompanions = await getBookmarkedCompanions(user.id);
 
 	return (
 		<main className="min-lg:w-3/4">
@@ -75,7 +75,7 @@ const Profile = async () => {
 				</div>
 			</section>
 			<Accordion type="multiple">
-				{/* <AccordionItem value="bookmarks">
+				<AccordionItem value="bookmarks">
 					<AccordionTrigger className="text-2xl font-bold">
 						Bookmarked Companions{" "}
 						{`(${bookmarkedCompanions.length})`}
@@ -86,7 +86,7 @@ const Profile = async () => {
 							title="Bookmarked Companions"
 						/>
 					</AccordionContent>
-				</AccordionItem> */}
+				</AccordionItem>
 				<AccordionItem value="recent">
 					<AccordionTrigger className="text-2xl font-bold">
 						Recent Sessions
